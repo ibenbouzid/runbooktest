@@ -10,11 +10,20 @@
 workflow Get-AzureVMTutorial
 {
     
+    $subscriptionName = "INT-Imad-MSFT"
     #Logging in to Azure...
-    "Logging in to Azure..."
-    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-     Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+	# Get the connection "AzureRunAsConnection "
+    $servicePrincipalConnection=Get-AutomationConnection -Name "AzureRunAsConnection"         
 
+    "Logging in to Azure..."
+    Add-AzureRmAccount `
+        -ServicePrincipal `
+        -TenantId $servicePrincipalConnection.TenantId `
+        -ApplicationId $servicePrincipalConnection.ApplicationId `
+        -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+        
+    Select-AzureRmSubscription -SubscriptionName $subscriptionName
+     
     #The name of the Automation Credential Asset this runbook will use to authenticate to Azure.
     #$CredentialAssetName = 'DefaultAzureCredential'
 
