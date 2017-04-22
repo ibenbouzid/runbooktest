@@ -9,11 +9,17 @@
 #>
 workflow Get-AzureVMTutorial
 {
+    
+    #Logging in to Azure...
+    "Logging in to Azure..."
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
     #The name of the Automation Credential Asset this runbook will use to authenticate to Azure.
-    $CredentialAssetName = 'DefaultAzureCredential'
+    #$CredentialAssetName = 'DefaultAzureCredential'
 
     #Get the credential with the above name from the Automation Asset store
-    $Cred = Get-AutomationPSCredential -Name $CredentialAssetName
+    <#$Cred = Get-AutomationPSCredential -Name $CredentialAssetName
     if(!$Cred) {
         Throw "Could not find an Automation Credential Asset named '${CredentialAssetName}'. Make sure you have created one in this Automation Account."
     }
@@ -22,7 +28,7 @@ workflow Get-AzureVMTutorial
     $Account = Add-AzureAccount -Credential $Cred
     if(!$Account) {
         Throw "Could not authenticate to Azure using the credential asset '${CredentialAssetName}'. Make sure the user name and password are correct."
-    }
+    }#>
 
     #TODO (optional): pick the right subscription to use. Without this line, the default subscription for your Azure Account will be used.
     #Select-AzureSubscription -SubscriptionName "TODO: your Azure subscription name here"
