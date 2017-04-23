@@ -9,7 +9,31 @@
         "runbookDescription": "Authenticates to Azure and lists all the Azure V1 VMs",
         "sku": "Free",
         "accountName": "[concat('RunAsAccount-',take(uniqueString(resourceGroup().id),3))]",
-        "jobId": "[concat('a28805fe-f244-47f3-9d9d-',take(uniqueString(resourceGroup().id),12))]"
+        "uniqueBase": "[toLower(uniqueString(0, resourceGroup().id, deployment().name))]",
+    "temp": "[concat(variables('uniqueBase') , variables('uniqueBase'), substring(variables('uniqueBase'), 0, 10))]",
+    "g": "[replace(variables('temp'), 'g', '0')]",
+    "h": "[replace(variables('g'), 'h', '1')]",
+    "i": "[replace(variables('h'), 'i', '2')]",
+    "j": "[replace(variables('i'), 'j', '3')]",
+    "k": "[replace(variables('j'), 'k', '4')]",
+    "l": "[replace(variables('k'), 'l', '5')]",
+    "m": "[replace(variables('l'), 'm', '6')]",
+    "n": "[replace(variables('m'), 'n', '7')]",
+    "o": "[replace(variables('n'), 'o', '8')]",
+    "p": "[replace(variables('o'), 'p', '9')]",
+    "q": "[replace(variables('p'), 'q', 'a')]",
+    "r": "[replace(variables('q'), 'r', 'b')]",
+    "s": "[replace(variables('r'), 's', 'c')]",
+    "t": "[replace(variables('s'), 't', 'd')]",
+    "u": "[replace(variables('t'), 'u', 'e')]",
+    "v": "[replace(variables('u'), 'v', 'f')]",
+    "w": "[replace(variables('v'), 'w', '0')]",
+    "x": "[replace(variables('w'), 'x', '1')]",
+    "y": "[replace(variables('x'), 'y', '2')]",
+    "z": "[replace(variables('y'), 'z', '3')]",
+    "jobId": "[concat(substring(variables('z'), 0, 8), '-', substring(variables('z'), 9, 4), '-', substring(variables('z'), 14, 4), '-', substring(variables('z'), 19, 4), '-', substring(variables('z'), 24, 12))]"
+
+        //"jobId": "[concat('a28805fe-f244-47f3-9d9d-',take(uniqueString(resourceGroup().id),12))]"
     },
     "resources": [
       {
