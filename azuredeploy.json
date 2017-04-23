@@ -9,7 +9,7 @@
         "runbookDescription": "Authenticates to Azure and lists all the Azure V1 VMs",
         "sku": "Free",
         "accountName": "[concat('RunAsAccount-',take(uniqueString(resourceGroup().id),3))]",
-        "uniqueBase": "[toLower(uniqueString('0', resourceGroup().id, deployment().name))]",
+        "uniqueBase": "[toLower(uniqueString(subscription().subscriptionId, resourceGroup().id, deployment().name))]",
     "temp": "[concat(variables('uniqueBase') , variables('uniqueBase'), substring(variables('uniqueBase'), 0, 10))]",
     "g": "[replace(variables('temp'), 'g', '0')]",
     "h": "[replace(variables('g'), 'h', '1')]",
