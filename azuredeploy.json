@@ -2,13 +2,6 @@
     "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01-preview#",
     "contentVersion": "1.0",
     "parameters": {
-        "accountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the Azure Automation account to deploy to."
-            },
-            "defaultvalue": "Runaccount"
-        }
     },
     "variables": {
         "runbookName": "Get-AzureVMTutorial",
@@ -20,7 +13,7 @@
     },
     "resources": [
       {
-        "name": "[parameters('accountName')]",
+        "name": "[variables('accountName')]",
         "type": "Microsoft.Automation/automationAccounts",
         "apiVersion": "2015-01-01-preview",
         "location": "[resourceGroup().location]",
@@ -38,7 +31,7 @@
             "apiVersion": "2015-01-01-preview",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-              "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+              "[concat('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
             ],
             "tags": { },
             "properties": {
@@ -58,8 +51,8 @@
             "apiVersion": "2015-01-01-preview",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-              "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]",
-              "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/',variables('runbookName'))]"
+              "[concat('Microsoft.Automation/automationAccounts/', variables('accountName'))]",
+              "[concat('Microsoft.Automation/automationAccounts/',variables('accountName'), '/runbooks/',variables('runbookName'))]"
             ],
             "tags": {
               "key": "value"
