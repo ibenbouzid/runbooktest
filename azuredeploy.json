@@ -2,6 +2,19 @@
     "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01-preview#",
     "contentVersion": "1.0",
     "parameters": {
+        
+         "AzureuserName": {
+            "type": "string",
+            "metadata": {
+                "description": "The username for the Azure Automation credential."
+            }
+        },
+        "Azurepassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The password for the Azure Automation credential."
+            }
+        },
     },
     "variables": {
         "runbookName": "Get-AzureVMTutorial",
@@ -63,6 +76,20 @@
                 "[resourceId('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
             ]
         },
+           {
+            "name": "DefaultAzureCredential",
+            "type": "credentials",
+            "apiVersion": "2015-01-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+              "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+            ],
+            "tags": { },
+            "properties": {
+              "userName": "[parameters('AzureuserName')]",
+              "password": "[parameters('Azurepassword')]"
+            }
+          },
           {
             "name": "[variables('runbookName')]",
             "type": "runbooks",
