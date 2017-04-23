@@ -6,14 +6,9 @@
             "type": "string",
             "metadata": {
                 "description": "The name of the Azure Automation account to deploy to."
-            }
+            },
+            "defaultvalue": "Runaccount"
         },
-        "jobId": {
-            "type": "string",
-            "metadata": {
-                "description": "The GUID for the runbook job to be started."
-            }
-        }
     },
     "variables": {
         "runbookName": "Get-AzureVMTutorial",
