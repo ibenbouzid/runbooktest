@@ -19,7 +19,7 @@
     "variables": {
         "runbookName": "Get-AzureVMTutorial",
         "scriptUri": "https://raw.githubusercontent.com/ibenbouzid/runbooktest/master/Runbooks/Get-AzureVMTutorial.ps1",
-        "runbookDescription": "Authenticates to Azure and lists all the Azure V1 VMs",
+        "runbookDescription": "Authenticates to Azure and lists all the Azure V1 VMs ",
         "sku": "Free",
         "accountName": "[concat('RunAsAccount-',take(uniqueString(resourceGroup().id),3))]",
         "uniqueBase": "[toLower(uniqueString(subscription().subscriptionId, resourceGroup().id, deployment().name))]",
