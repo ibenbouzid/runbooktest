@@ -61,7 +61,7 @@
                         "description": "Azure Subscription Id",
                         "value": "[concat('\"',subscription().subscriptionId,'\"')]"
                     }
-           }
+           },
           {
             "name": "[variables('runbookName')]",
             "type": "runbooks",
