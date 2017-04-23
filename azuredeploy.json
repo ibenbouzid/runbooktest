@@ -33,7 +33,6 @@
     "z": "[replace(variables('y'), 'z', '3')]",
     "jobId": "[concat(substring(variables('z'), 0, 8), '-', substring(variables('z'), 9, 4), '-', substring(variables('z'), 14, 4), '-', substring(variables('z'), 19, 4), '-', substring(variables('z'), 24, 12))]"
 
-        //"jobId": "[concat('a28805fe-f244-47f3-9d9d-',take(uniqueString(resourceGroup().id),12))]"
     },
     "resources": [
       {
@@ -49,19 +48,7 @@
           }
         },
         "resources": [
-            {
-                    "name": "AzureSubscriptionId",
-                    "type": "variables",
-                    "apiVersion": "2015-10-31",
-                    "dependsOn": [
-                        "[concat('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
-                    ],
-                    "tags": {},
-                    "properties": {
-                        "description": "Azure Subscription Id",
-                        "value": "[concat('\"',subscription().subscriptionId,'\"')]"
-                    }
-           },
+
           {
             "name": "[variables('runbookName')]",
             "type": "runbooks",
