@@ -60,7 +60,7 @@
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Automation/automationAccounts', variables('accountName'))]"
+                "[resourceId('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
             ]
         },
           {
