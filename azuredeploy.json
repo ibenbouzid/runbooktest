@@ -35,17 +35,20 @@
 
     },
     "resources": [
-      {
-        "name": "[variables('accountName')]",
-        "type": "Microsoft.Automation/automationAccounts",
-        "apiVersion": "2015-01-01-preview",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [ ],
-        "tags": { },
-        "properties": {
-          "sku": {
-            "name": "[variables('sku')]"
-          }
+     {
+            "type": "Microsoft.Automation/automationAccounts/connections",
+            "name": "AzureRunAsConnection",
+            "apiVersion": "2015-10-31",
+            "properties": {
+                "description": null,
+                "fieldDefinitionValues": null,
+                "connectionType": {
+                    "name": "AzureServicePrincipal"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', variables('accountName'))]"
+            ]
         },
         "resources": [
             {
