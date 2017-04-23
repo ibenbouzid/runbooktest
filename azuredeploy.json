@@ -15,7 +15,7 @@
         "scriptUri": "https://raw.githubusercontent.com/ibenbouzid/runbooktest/master/Runbooks/Get-AzureVMTutorial.ps1",
         "runbookDescription": "Authenticates to Azure and lists all the Azure V1 VMs",
         "sku": "Free",
-        "jobId": "GEN-GUID"
+        "jobId": "[concat('DA0A98DB-6962-8EC4-E547-',take(uniqueString(resourceGroup().id),12))]"
     },
     "resources": [
       {
