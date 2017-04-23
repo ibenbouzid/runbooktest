@@ -62,21 +62,6 @@
         },
         "resources": [
         {
-            "type": "connections",
-            "name": "AzureRunAsConnection",
-            "apiVersion": "2015-10-31",
-            "properties": {
-                "description": null,
-                "fieldDefinitionValues": null,
-                "connectionType": {
-                    "name": "AzureServicePrincipal"
-                }
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
-            ]
-        },
-           {
             "name": "DefaultAzureCredential",
             "type": "credentials",
             "apiVersion": "2015-01-01-preview",
