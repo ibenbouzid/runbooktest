@@ -49,6 +49,19 @@
           }
         },
         "resources": [
+            {
+                    "name": "AzureSubscriptionId",
+                    "type": "variables",
+                    "apiVersion": "2015-10-31",
+                    "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', variables('accountName'))]"
+                    ],
+                    "tags": {},
+                    "properties": {
+                        "description": "Azure Subscription Id",
+                        "value": "[concat('\"',subscription().subscriptionId,'\"')]"
+                    }
+           }
           {
             "name": "[variables('runbookName')]",
             "type": "runbooks",
